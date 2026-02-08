@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ms">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistem Jana Surat Ponteng - SMAS</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Sistem Jana Surat Ponteng</h1>
+        <p>Sekolah Menengah Awang Semaun (SMAS), Brunei</p>
+      </header>
+
+      <form id="letterForm" class="card">
+        <div class="grid">
+          <label>
+            Jenis Surat
+            <select id="letterType" required>
+              <option value="R1">R1 - Peringatan Pertama</option>
+              <option value="R2">R2 - Peringatan Kedua</option>
+              <option value="R3">R3 - Peringatan Terakhir</option>
+            </select>
+          </label>
+
+          <label>
+            Tarikh Surat
+            <input type="date" id="letterDate" required />
+          </label>
+
+          <label>
+            Muat Naik Logo
+            <input type="file" id="logoUpload" accept="image/*" />
+          </label>
+
+          <label>
+            Nama Ibu/Bapa/Penjaga (Yang Mulia)
+            <input type="text" id="parentName" required />
+          </label>
+
+          <label class="full-width">
+            Alamat
+            <textarea id="address" rows="3" required></textarea>
+          </label>
+
+          <label>
+            Nama Penuntut
+            <input type="text" id="studentName" required />
+          </label>
+
+          <label>
+            Tingkatan/Kelas
+            <input type="text" id="studentClass" required />
+          </label>
+
+          <label class="full-width">
+            Tarikh-Tarikh Tidak Hadir
+            <textarea id="absenceDates" rows="3" placeholder="Contoh: 02/01/2026, 03/01/2026, 05/01/2026" required></textarea>
+          </label>
+        </div>
+
+        <section id="r2Fields" class="conditional hidden">
+          <h2>Maklumat Tambahan R2</h2>
+          <label>
+            Tarikh Surat R1
+            <input type="date" id="r1Date" />
+          </label>
+        </section>
+
+        <section id="r3Fields" class="conditional hidden">
+          <h2>Maklumat Tambahan R3</h2>
+          <div class="grid">
+            <label>
+              Tarikh Surat R2
+              <input type="date" id="r2Date" />
+            </label>
+            <label>
+              Jumlah Hari Hadir
+              <input type="number" id="daysPresent" min="0" />
+            </label>
+            <label>
+              Jumlah Hari Persekolahan
+              <input type="number" id="schoolDays" min="0" />
+            </label>
+            <label>
+              Peratus Kedatangan
+              <input type="text" id="attendancePercent" placeholder="Contoh: 82%" />
+            </label>
+          </div>
+        </section>
+
+        <button type="submit">Jana PDF Surat Rasmi</button>
+      </form>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
